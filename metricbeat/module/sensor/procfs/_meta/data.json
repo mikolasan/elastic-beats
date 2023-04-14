@@ -7,13 +7,16 @@
     "metricset":{
         "host":"localhost",
         "module":"sensor",
-        "name":"lmsensors",
+        "name":"procfs",
         "rtt":44269
     },
     "sensor":{
-        "lmsensors":{
-            "name": "temp",
-            "value": 36
+        "procfs":{
+            "cpu":{
+                "frequency":{
+                    "mhz": 1600.5
+                }
+            }
         }
     },
     "type":"metricsets"

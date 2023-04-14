@@ -1,10 +1,11 @@
-package lmsensors
+package procfs
 
 import (
+	"github.com/pkg/errors"
+
     "github.com/elastic/elastic-agent-libs/mapstr"
 	"github.com/elastic/beats/v7/metricbeat/mb/parse"
 	"github.com/elastic/beats/v7/metricbeat/mb"
-	"github.com/eosswedenorg-go/gosensors"	
 )
 
 // init registers the MetricSet with the central registry as soon as the program
@@ -12,7 +13,7 @@ import (
 // the MetricSet for each host defined in the module's configuration. After the
 // MetricSet has been created then Fetch will begin to be called periodically.
 func init() {
-	mb.Registry.MustAddMetricSet("sensor", "lmsensors", New,
+	mb.Registry.MustAddMetricSet("sensor", "procfs", New,
 		mb.WithHostParser(parse.EmptyHostParser),
 		mb.DefaultMetricSet(),
 	)
@@ -24,7 +25,6 @@ func init() {
 // interface methods except for Fetch.
 type MetricSet struct {
 	mb.BaseMetricSet
-	sensors []gosensors.Feature
 }
 
 // New creates a new instance of the MetricSet. New is responsible for unpacking
@@ -37,16 +37,6 @@ func New(base mb.BaseMetricSet) (mb.MetricSet, error) {
 
 	m := &MetricSet{
 		BaseMetricSet: base,
-		sensors: nil,
-	}
-
-	gosensors.Init()
-	chips := gosensors.GetDetectedChips()
-	for i := 0; i < len(chips); i++ {
-		features := chips[i].GetFeatures()
-		for j := 0; j < len(features); j++ {
-			m.sensors = append(m.sensors, features[j])
-		}
 	}
 
 	return m, nil
@@ -56,14 +46,20 @@ func New(base mb.BaseMetricSet) (mb.MetricSet, error) {
 // format. It publishes the event which is then forwarded to the output. In case
 // of an error set the Error field of mb.Event or simply call report.Error().
 func (m *MetricSet) Fetch(report mb.ReporterV2) error {
-	for i := 0; i < len(m.sensors); i++ {
-		report.Event(mb.Event{
-			MetricSetFields: mapstr.M{
-				"name": m.sensors[i].Name,
-				"value": m.sensors[i].GetValue(),
-			},
-		})
+	freq, err := readCurFreq()
+	if err == nil {
+		return errors.Wrap(err, "failed to get CPU frequency")
 	}
 
+	report.Event(mb.Event{
+		MetricSetFields: mapstr.M{
+			"cpu": mapstr.M{
+				"frequency": mapstr.M{
+					"mhz": freq,
+				},
+			},
+		},
+	})
+	
 	return nil
 }

@@ -24,7 +24,7 @@ import (
 )
 
 func init() {
-	if err := asset.SetFields("sensor", "sensor", asset.ModuleFieldsPri, AssetSensor); err != nil {
+	if err := asset.SetFields("metricbeat", "sensor", asset.ModuleFieldsPri, AssetSensor); err != nil {
 		panic(err)
 	}
 }
@@ -32,5 +32,5 @@ func init() {
 // AssetSensor returns asset data.
 // This is the base64 encoded zlib format compressed contents of module/sensor.
 func AssetSensor() string {
-	return "eJx8kEGugyAYhPecYuLeC7B4u3eCdwKeTBsiCAFMy+0bBRtjrbOc38z3SY+RRSJxSj4KIJtsKdH9lZTpWp86AURaqkSJf2YlAM00RBOy8ZPEjwDQvobzerYUwM3Q6iTXW49JOUpY1zbXFsglUOIe/RxaczK8xL5t4JijGbaFPeWKdE5bcvy1LV9Mqs3n+FFkL8OncmF9lH2qzsjy8FEfbhfwJb91sELFKwAA///E2Xy2"
+	return "eJzEkEFOxiAUhPecYvLvewEW7jyBJ8AyNaRQCNAotzct1NS2NjExcZbvwTczr8PIIpE4JR8FkE22lHi8lJTp2jw9BBBpqRIlXpmVADRTH03Ixk8STwJAew3n9WwpgMHQ6iTXXYdJOUpY15jrFMglUOIt+jm0yQV4kf1KA8ccTb8RrlxC9P3wa4v66wZ/V+TaadHxcpt+SFHLnuHHIPsw/FAurDffq8YZWd591Ifdjfmi5wqspqfu3877p8VP5H9s/RkAAP//KhbTKw=="
 }

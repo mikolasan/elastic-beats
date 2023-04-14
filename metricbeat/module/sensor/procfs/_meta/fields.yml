@@ -1,0 +1,10 @@
+- name: procfs
+  type: group
+  release: beta
+  description: >
+    procfs
+  fields:
+    - name: example
+      type: keyword
+      description: >
+        Example field

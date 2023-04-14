@@ -159,6 +159,7 @@ import (
 	_ "github.com/elastic/beats/v7/metricbeat/module/redis/keyspace"
 	_ "github.com/elastic/beats/v7/metricbeat/module/sensor"
 	_ "github.com/elastic/beats/v7/metricbeat/module/sensor/lmsensors"
+	_ "github.com/elastic/beats/v7/metricbeat/module/sensor/procfs"
 	_ "github.com/elastic/beats/v7/metricbeat/module/system"
 	_ "github.com/elastic/beats/v7/metricbeat/module/system/core"
 	_ "github.com/elastic/beats/v7/metricbeat/module/system/cpu"

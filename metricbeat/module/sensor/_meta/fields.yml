@@ -9,3 +9,8 @@
       description: >
         lm sensors metrics
       fields:
+    - name: procfs
+      type: group
+      description: >
+        procfs metrics
+      fields:

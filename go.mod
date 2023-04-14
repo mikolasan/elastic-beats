@@ -200,6 +200,7 @@ require (
 	github.com/elastic/go-elasticsearch/v8 v8.2.0
 	github.com/elastic/mito v0.0.0-20230302005114-1dda06e81678
 	github.com/elastic/toutoumomoma v0.0.0-20221026030040-594ef30cb640
+	github.com/eosswedenorg-go/gosensors v0.0.0-20221212103655-9a5ea95783fc
 	github.com/foxcpp/go-mockdns v0.0.0-20201212160233-ede2f9158d15
 	github.com/google/cel-go v0.13.0
 	github.com/googleapis/gax-go/v2 v2.6.0
@@ -257,7 +258,6 @@ require (
 	github.com/eapache/queue v1.1.0 // indirect
 	github.com/elastic/elastic-transport-go/v8 v8.1.0 // indirect
 	github.com/elastic/go-windows v1.0.1 // indirect
-	github.com/eskibars/gosensors v0.0.0-20160316165801-9ae18da104c9 // indirect
 	github.com/evanphx/json-patch v4.12.0+incompatible // indirect
 	github.com/fearful-symmetry/gomsr v0.0.1 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
