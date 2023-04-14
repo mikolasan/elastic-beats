@@ -1,0 +1,4 @@
+- module: sensor
+  metricsets: ["lmsensors"]
+  enabled: true
+  period: 10s

@@ -1,0 +1,1 @@
+This is the lmsensors metricset of the module lmsensors.

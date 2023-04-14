@@ -1,0 +1,10 @@
+- name: lmsensors
+  type: group
+  release: beta
+  description: >
+    lmsensors
+  fields:
+    - name: example
+      type: keyword
+      description: >
+        Example field

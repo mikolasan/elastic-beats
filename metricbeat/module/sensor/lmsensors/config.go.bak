@@ -1,0 +1,52 @@
+// package lmsensors
+
+// import (
+// 	"strings"
+
+// 	"github.com/pkg/errors"
+
+// 	"github.com/elastic/beats/v7/libbeat/common/cfgwarn"
+// 	metrics "github.com/elastic/elastic-agent-system-metrics/metric/cpu"
+// )
+
+// // Core metric types.
+// const (
+// 	percentages = "percentages"
+// 	ticks       = "ticks"
+// )
+
+// // Config for the system core metricset.
+// type Config struct {
+// 	Metrics  []string `config:"core.metrics"`
+// 	CPUTicks *bool    `config:"cpu_ticks"` // Deprecated.
+// }
+
+// // Validate validates the core config.
+// func (c Config) Validate() (metrics.MetricOpts, error) {
+// 	opts := metrics.MetricOpts{}
+// 	if c.CPUTicks != nil {
+// 		cfgwarn.Deprecate("6.1.0", "cpu_ticks is deprecated. Add 'ticks' to the core.metrics list.")
+// 	}
+
+// 	if len(c.Metrics) == 0 {
+// 		return opts, errors.New("core.metrics cannot be empty")
+// 	}
+
+// 	for _, metric := range c.Metrics {
+// 		switch strings.ToLower(metric) {
+// 		case percentages:
+// 			opts.Percentages = true
+// 		case ticks:
+// 			opts.Ticks = true
+// 		default:
+// 			return opts, errors.Errorf("invalid core.metrics value '%v' (valid "+
+// 				"options are %v and %v)", metric, percentages, ticks)
+// 		}
+// 	}
+
+// 	return opts, nil
+// }
+
+// var defaultConfig = Config{
+// 	Metrics: []string{percentages},
+// }

@@ -1,0 +1,7 @@
+# Module: sensor
+# Docs: https://www.elastic.co/guide/en/beats/sensor/master/sensor-module-sensor.html
+
+- module: sensor
+  metricsets: ["lmsensors"]
+  enabled: true
+  period: 10s

@@ -1,0 +1,11 @@
+- key: sensor
+  title: "System sensors"
+  release: beta
+  description: >
+    sensor module
+  fields:
+    - name: lmsensors
+      type: group
+      description: >
+        lm sensors metrics
+      fields:
